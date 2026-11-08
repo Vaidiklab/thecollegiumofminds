@@ -7,4 +7,8 @@
 # Improvemnt thesis - Phase neo.
 1. Understanding the *core architecture of website*
 2. Curating phase neo - UI improvement.
+   - Collecting inspiration.
+   - choosing consistent color pallete.
+
+# Improvement thesis - Phase akrón.
 
