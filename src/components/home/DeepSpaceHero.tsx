@@ -68,25 +68,29 @@ export function DeepSpaceHero() {
             style={shouldReduceMotion ? {} : { opacity: textOpacity, y: textY }}
             className="flex-1 z-20 text-left max-w-2xl select-none"
           >
-            {/* Primary Display Title: Inter ExtraBold, confident, large */}
+            {/* Primary Display Title: Georgia Bold ("Collegium") + Georgia Italic ("of Minds") */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              className="font-sans font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7.25rem] tracking-tight text-[#F2EEE8] leading-[0.94]"
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7.25rem] tracking-tight text-[#F2EEE8] leading-[0.96]"
+              style={{ fontFamily: "Georgia, 'Cormorant Garamond', serif" }}
             >
-              Collegium <br />
-              <span className="block font-extrabold">of Minds.</span>
+              <span className="block font-bold">Collegium</span>
+              <span className="block italic font-normal text-[#E5E0D8]/95 mt-1 sm:mt-2">
+                of Minds
+              </span>
             </motion.h1>
 
-            {/* Secondary Phrase: Visually subordinate, warm off-white, no purple */}
+            {/* Secondary Motto: "Think. Explore. Discover." in high-contrast editorial serif */}
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-6 sm:mt-8 font-serif italic text-2xl sm:text-3xl md:text-4xl text-[#E5E0D8]/85 tracking-normal font-normal"
+              className="mt-6 sm:mt-8 text-2xl sm:text-3xl md:text-4xl text-[#E5E0D8]/90 tracking-wide font-normal italic"
+              style={{ fontFamily: "'Instrument Serif', 'Cormorant Garamond', Georgia, serif" }}
             >
-              Beyond what we know.
+              Think. Explore. Discover.
             </motion.p>
           </motion.div>
 

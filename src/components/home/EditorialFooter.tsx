@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const randomPrompts = [
   "If you could definitively answer one unresolved question, what would it be?",
@@ -18,116 +19,225 @@ export function EditorialFooter() {
     setPrompt(randomPrompts[Math.floor(Math.random() * randomPrompts.length)]);
   }, []);
 
-  const navLinks = [
-    { label: "About", to: "/#about" },
+  const repoLinks = [
+    { label: "Philosophy", to: "/#about" },
     { label: "Disciplines", to: "/#disciplines" },
     { label: "Principles", to: "/#principles" },
-    { label: "Questions", to: "/#questions" },
+    { label: "Inquiries", to: "/#questions" },
     { label: "Library", to: "/library" },
     { label: "Discussions", to: "/#discussions" },
     { label: "Events", to: "/events" },
-    { label: "Join CoM", to: "/#join" },
   ];
 
-  const connectLinks = [
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/the-collegium-of-minds/" },
-    { label: "Discord", href: "https://discord.gg/bEMYvJ7eU3" },
-    { label: "GitHub", href: "https://github.com/CoM-137" },
-    { label: "Email the Guild", href: "mailto:collegiumofminds@gmail.com" },
+  const dialogueLinks = [
+    { label: "Discord Community", href: "https://discord.gg/bEMYvJ7eU3", external: true },
+    { label: "GitHub Repository", href: "https://github.com/CoM-137", external: true },
+    { label: "LinkedIn Portal", href: "https://www.linkedin.com/company/the-collegium-of-minds/", external: true },
+    { label: "Email the Guild", href: "mailto:collegiumofminds@gmail.com", external: true },
+    { label: "Council Dossiers", to: "/#team" },
+    { label: "Code of Conduct", to: "/#join" },
+  ];
+
+  const dispatchLinks = [
+    { label: "Monthly Gazette", to: "/#library" },
+    { label: "Digital Salon Bulletin", to: "/#discussions" },
+    { label: "Question of the Week", to: "/#questions" },
+    { label: "Substack Dispatch", to: "/#library" },
+    { label: "Fellowship Inquiries", to: "/#join" },
+    { label: "Supporters & Patrons", to: "/supporters" },
   ];
 
   return (
-    <footer className="relative z-10 border-t border-white/10 bg-[#050505] text-[#F2EEE8]" aria-label="Footer">
-      {/* Ponder This Editorial Strip */}
-      <div className="border-b border-white/5 py-6 px-6 sm:px-10 lg:px-16 bg-[#080808]">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
-          <span className="font-mono text-[10px] tracking-[3px] uppercase text-[#A3A3A3] whitespace-nowrap">
-            Ponder This
-          </span>
-          <p className="font-serif italic text-sm sm:text-base text-[#A5A19F]">
+    <footer
+      className="relative z-10 bg-[#030303] text-[#F2EEE8] border-t border-white/8 overflow-hidden"
+      aria-label="Footer"
+    >
+      {/* Ponder This Contemplative Editorial Banner (CoM Signature Strip) */}
+      <div className="border-b border-white/5 py-4 px-6 sm:px-10 lg:px-16 bg-[#060606]">
+        <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6">
+          <div className="flex items-center gap-2.5 flex-shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA] animate-pulse" />
+            <span className="font-mono text-[10px] tracking-[2.5px] uppercase text-[#A3A3A3] whitespace-nowrap">
+              Ponder This
+            </span>
+          </div>
+          <p className="font-serif italic text-[13px] sm:text-[14px] text-[#A5A19F] truncate sm:text-right">
             "{prompt}"
           </p>
         </div>
       </div>
 
-      {/* Main Footer Directory */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-          {/* Identity Column */}
-          <div className="md:col-span-6 space-y-4">
+      {/* Main 4-Column Directory (Supaste structural layout: Column 1 flex-2, Columns 2-4 flex-1) */}
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-16 pt-16 sm:pt-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+          {/* Column 1: Identity, Dual Tagline, Mission, CTA & Leadership Credit (flex: 2 / 5 cols) */}
+          <div className="lg:col-span-5 flex flex-col items-start gap-4">
+            {/* Logo Row: 30x30 squircle + brand name + badge */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+              <div className="w-[30px] h-[30px] rounded-[8px] overflow-hidden border border-white/15 bg-[#121212] flex-shrink-0">
                 <img
                   src="/logo.jpeg"
-                  alt="CoM"
+                  alt="CoM Emblem"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="font-serif text-lg text-[#F2EEE8]">
-                The Collegium of Minds
+              <span className="font-sans text-[15px] font-semibold tracking-[-0.02em] text-[#F2EEE8]">
+                Collegium of Minds
+              </span>
+              <span className="font-mono text-[10px] tracking-[1.5px] uppercase text-[#716E6B] px-2 py-0.5 rounded border border-white/8 bg-white/[0.02]">
+                Guild
               </span>
             </div>
 
-            <p className="font-mono text-[11px] tracking-[2px] uppercase text-[#716E6B]">
-              Think. Explore. Discover.
+            {/* Supaste-inspired Dual Typography Tagline (Bold Display + Italic Serif) */}
+            <div className="mt-1">
+              <p className="font-sans font-bold text-[28px] sm:text-[32px] tracking-[-0.04em] text-[#F2EEE8] leading-[1.05]">
+                Think deeply.
+              </p>
+              <p className="font-serif italic text-[28px] sm:text-[32px] text-[#E5E0D8] leading-[1.05] mt-0.5">
+                Venture beyond.
+              </p>
+            </div>
+
+            {/* Mission prose */}
+            <p className="font-sans text-[13px] sm:text-[14px] text-[#A5A19F] opacity-75 max-w-sm leading-[1.55] tracking-[-0.01em]">
+              An independent intellectual guild for curious thinkers, scholars, and lifelong learners. Where foundational questions are celebrated and ideas explored beyond convention.
             </p>
 
-            <p className="font-sans font-light text-xs sm:text-sm text-[#A5A19F] max-w-sm leading-relaxed">
-              An independent intellectual guild for curious thinkers, scholars, and lifelong learners. Where foundational questions are celebrated and ideas are explored beyond convention.
-            </p>
+            {/* Action CTA Button (Supaste 8px pill button) */}
+            <Link
+              to="/#join"
+              className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-[8px] bg-[#F2EEE8] text-[#030303] text-[12px] font-semibold tracking-[-0.02em] hover:bg-white transition-all shadow-sm group"
+            >
+              <span>Apply for Fellowship</span>
+              <ArrowUpRight
+                size={13}
+                className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
+
+            {/* Copyright & Founder Row (Supaste Solt Wagner attribution adaptation) */}
+            <div className="mt-4 pt-4 border-t border-white/8 w-full flex flex-col gap-2">
+              <p className="text-[12px] text-[#716E6B] tracking-tight">
+                © 2025–2026 The Collegium of Minds. All rights reserved.
+              </p>
+              <div className="flex items-center gap-2 text-[12px] text-[#A3A3A3]">
+                <span>Conceived &amp; Founded by</span>
+                <a
+                  href="https://linkedin.com/in/sarveshkore"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[#F2EEE8] hover:text-white font-medium transition-colors group"
+                >
+                  <div className="w-[20px] h-[20px] rounded-full overflow-hidden border border-white/20 flex-shrink-0 bg-[#171717]">
+                    <img
+                      src="/team/sarvesh.png"
+                      alt="Sarvesh Kore"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="underline decoration-white/30 group-hover:decoration-white">Sarvesh Kore</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Navigation Links */}
-          <div className="md:col-span-3">
-            <h4 className="font-mono text-xs uppercase tracking-[2px] text-[#A3A3A3] mb-5">
+          {/* Column 2: Repository / Menu (flex: 1 / 2-3 cols) */}
+          <div className="lg:col-span-2 lg:col-start-7 flex flex-col gap-3">
+            <h6 className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-white/40 uppercase mb-2">
               Repository
-            </h4>
-            <ul className="space-y-2.5">
-              {navLinks.map((l) => (
-                <li key={l.label}>
+            </h6>
+            <ul className="flex flex-col gap-2.5">
+              {repoLinks.map((item) => (
+                <li key={item.label}>
                   <Link
-                    to={l.to}
-                    className="font-sans font-light text-xs sm:text-sm text-[#A5A19F] hover:text-[#F2EEE8] transition-colors"
+                    to={item.to}
+                    className="font-sans text-[13px] sm:text-[14px] font-medium tracking-[-0.02em] text-[#A3A3A3] hover:text-[#F2EEE8] transition-colors duration-150"
                   >
-                    {l.label}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Connect Links */}
-          <div className="md:col-span-3">
-            <h4 className="font-mono text-xs uppercase tracking-[2px] text-[#A3A3A3] mb-5">
+          {/* Column 3: Dialogue / Community (flex: 1 / 2-3 cols) */}
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <h6 className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-white/40 uppercase mb-2">
               Dialogue
-            </h4>
-            <ul className="space-y-2.5">
-              {connectLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-sans font-light text-xs sm:text-sm text-[#A5A19F] hover:text-[#F2EEE8] transition-colors"
+            </h6>
+            <ul className="flex flex-col gap-2.5">
+              {dialogueLinks.map((item) => (
+                <li key={item.label}>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-sans text-[13px] sm:text-[14px] font-medium tracking-[-0.02em] text-[#A3A3A3] hover:text-[#F2EEE8] transition-colors duration-150 inline-flex items-center gap-1"
+                    >
+                      <span>{item.label}</span>
+                      <ArrowUpRight size={12} className="opacity-40" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.to!}
+                      className="font-sans text-[13px] sm:text-[14px] font-medium tracking-[-0.02em] text-[#A3A3A3] hover:text-[#F2EEE8] transition-colors duration-150"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Dispatches & Records (flex: 1 / 2-3 cols) */}
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <h6 className="font-sans text-[13px] font-semibold tracking-[-0.01em] text-white/40 uppercase mb-2">
+              Dispatches
+            </h6>
+            <ul className="flex flex-col gap-2.5">
+              {dispatchLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    className="font-sans text-[13px] sm:text-[14px] font-medium tracking-[-0.02em] text-[#A3A3A3] hover:text-[#F2EEE8] transition-colors duration-150"
                   >
-                    {l.label}
-                  </a>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-[#716E6B]">
-          <span>
-            © 2025–2026 The Collegium of Minds. All rights reserved with Founder Sarvesh Kore.
-          </span>
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/60 animate-pulse" />
-            Always questioning
-          </span>
-        </div>
+      {/* Supaste Signature Bottom Watermark: Monumental Tone-on-Tone SVG Brand Typography */}
+      <div
+        className="w-full h-[90px] sm:h-[150px] md:h-[200px] lg:h-[240px] flex items-center justify-center overflow-hidden border-t border-white/[0.04] select-none pointer-events-none px-4"
+        aria-hidden="true"
+      >
+        <svg
+          viewBox="0 0 1200 200"
+          className="w-full h-full max-w-[1200px]"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <text
+            x="50%"
+            y="65%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="#101010"
+            fontFamily="'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+            fontWeight="800"
+            letterSpacing="-0.05em"
+            fontSize="148"
+            className="transition-colors duration-300"
+          >
+            COLLEGIUM OF MINDS
+          </text>
+        </svg>
       </div>
     </footer>
   );

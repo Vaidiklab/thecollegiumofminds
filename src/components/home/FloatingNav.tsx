@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
 export function FloatingNav() {
   const [open, setOpen] = useState(false);
@@ -10,10 +10,21 @@ export function FloatingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 25);
+      setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
@@ -33,6 +44,7 @@ export function FloatingNav() {
 
   const navLinks = [
     { label: "About", to: "/#about" },
+    { label: "Disciplines", to: "/#disciplines" },
     { label: "Questions", to: "/#questions" },
     { label: "Library", to: "/library" },
     { label: "Discussions", to: "/#discussions" },
@@ -40,103 +52,158 @@ export function FloatingNav() {
   ];
 
   return (
-    <header className="fixed top-4 sm:top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-      <nav
-        aria-label="Primary Navigation"
-        className={`pointer-events-auto w-full max-w-4xl rounded-full transition-all duration-300 ${
-          scrolled
-            ? "bg-[#070707]/95 shadow-[0_12px_32px_rgba(0,0,0,0.85)] border border-white/10"
-            : "bg-[#0A0A0A]/90 shadow-[0_4px_24px_rgba(0,0,0,0.5)] border border-white/8"
-        } backdrop-blur-md px-4 sm:px-5 py-2 flex items-center justify-between gap-4`}
+    <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 flex justify-center pointer-events-none w-full px-4 sm:px-0">
+      <header
+        className={`pointer-events-auto relative flex flex-col items-center transition-all duration-300 ${
+          open ? "w-full max-w-[360px]" : "w-auto max-w-[95vw]"
+        }`}
       >
-        {/* Left: Logo & Wordmark */}
-        <Link
-          to="/"
-          onClick={(e) => {
-            if (location.pathname === "/") {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
-          className="flex items-center gap-2.5 group flex-shrink-0"
-        >
-          <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden border border-white/15 flex-shrink-0">
-            <img
-              src="/logo.jpeg"
-              alt="CoM Emblem"
-              className="w-full h-full object-cover"
-            />
+        {/* Left Inverted Concave Corner Wing (Ivory/Cream ceiling fillet connection) */}
+        {!open && (
+          <div
+            className="hidden sm:block absolute top-0 -left-[20px] w-[20px] h-[20px] overflow-visible pointer-events-none select-none z-10"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 20 20" width="20" height="20" className="w-full h-full block">
+              <path d="M 20 0 L 0 0 C 11.046 0 20 8.954 20 20 Z" fill="#F4F0EA" />
+              <path
+                d="M 0 0 C 11.046 0 20 8.954 20 20"
+                fill="none"
+                stroke="rgba(0, 0, 0, 0.08)"
+                strokeWidth="1"
+              />
+            </svg>
           </div>
-          <span className="font-sans text-xs sm:text-sm font-semibold tracking-tight text-[#F2EEE8] group-hover:text-white transition-colors whitespace-nowrap">
-            Collegium of Minds
-          </span>
-        </Link>
+        )}
 
-        {/* Right Desktop Nav Links + Join CoM CTA */}
-        <div className="hidden md:flex items-center gap-5 lg:gap-6">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              onClick={(e) => handleLinkClick(e, item.to)}
-              className="text-xs font-sans font-medium text-[#A3A3A3] hover:text-[#F2EEE8] transition-colors duration-150"
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          {/* Join CoM CTA Button (Clean high-contrast minimal pill) */}
-          <Link
-            to="/#join"
-            onClick={(e) => handleLinkClick(e, "/#join")}
-            className="text-xs font-sans font-semibold tracking-tight px-3.5 py-1.5 rounded-full bg-[#F2EEE8] text-[#030303] hover:bg-white transition-all duration-150 shadow-sm"
+        {/* Right Inverted Concave Corner Wing (Ivory/Cream ceiling fillet connection) */}
+        {!open && (
+          <div
+            className="hidden sm:block absolute top-0 -right-[20px] w-[20px] h-[20px] overflow-visible pointer-events-none select-none z-10"
+            aria-hidden="true"
           >
-            Join CoM
-          </Link>
-        </div>
+            <svg viewBox="0 0 20 20" width="20" height="20" className="w-full h-full block">
+              <path d="M 0 0 L 20 0 C 8.954 0 0 8.954 0 20 Z" fill="#F4F0EA" />
+              <path
+                d="M 20 0 C 8.954 0 0 8.954 0 20"
+                fill="none"
+                stroke="rgba(0, 0, 0, 0.08)"
+                strokeWidth="1"
+              />
+            </svg>
+          </div>
+        )}
 
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-1 rounded-full text-[#A3A3A3] hover:text-[#F2EEE8] focus:outline-none"
-          aria-label="Toggle navigation menu"
+        {/* Primary Navigation Capsule Bar — Sculptural Warm Ivory / Cream (#F4F0EA) */}
+        <nav
+          aria-label="Primary Navigation"
+          className={`relative bg-[#F4F0EA] text-[#0A0A0A] border-b border-x border-black/8 transition-all duration-300 ${
+            open
+              ? "rounded-b-[20px] w-full p-4 shadow-[0_24px_50px_rgba(0,0,0,0.6)]"
+              : "rounded-b-[18px] px-3.5 sm:px-4 py-2 sm:py-2.5 shadow-[0_12px_36px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.2)] flex items-center gap-6 md:gap-9"
+          }`}
         >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </nav>
+          {/* Top Bar Row (Brand + Nav Links + CTA on Desktop; Brand + Toggle on Mobile) */}
+          <div className="w-full flex items-center justify-between gap-4 sm:gap-8">
+            {/* Left: Brand Identity Cluster (Squircle emblem + dark SemiBold wordmark) */}
+            <Link
+              to="/"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+                setOpen(false);
+              }}
+              className="flex items-center gap-2.5 group flex-shrink-0"
+              aria-label="The Collegium of Minds Home"
+            >
+              <div className="w-[30px] h-[30px] rounded-[8px] overflow-hidden border border-black/10 bg-[#E8E3DB] flex-shrink-0 transition-transform duration-200 group-hover:scale-105 shadow-sm">
+                <img
+                  src="/logo.jpeg"
+                  alt="CoM Emblem"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="font-sans text-[13px] sm:text-[14px] font-semibold tracking-[-0.02em] text-[#0A0A0A] group-hover:text-black transition-colors whitespace-nowrap">
+                Collegium of Minds
+              </span>
+            </Link>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.18 }}
-            className="pointer-events-auto absolute top-14 left-4 right-4 max-w-sm mx-auto bg-[#0A0A0A] border border-white/10 rounded-2xl p-4 shadow-2xl flex flex-col gap-2.5 z-50"
-          >
-            {navLinks.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                onClick={(e) => handleLinkClick(e, item.to)}
-                className="text-xs font-sans font-medium text-[#A3A3A3] hover:text-[#F2EEE8] py-1.5 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="pt-2 border-t border-white/8">
+            {/* Desktop Center/Right Navigation Links (14px Medium, refined high-contrast dark tones) */}
+            <div className="hidden md:flex items-center gap-5 lg:gap-6">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={(e) => handleLinkClick(e, item.to)}
+                  className="font-sans text-[13px] lg:text-[14px] font-medium tracking-[-0.02em] text-[#0A0A0A]/70 hover:text-[#0A0A0A] transition-colors duration-150 whitespace-nowrap"
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              {/* Action CTA Button (Carbon Black high-contrast inverted pill) */}
               <Link
                 to="/#join"
                 onClick={(e) => handleLinkClick(e, "/#join")}
-                className="block text-center text-xs font-sans font-semibold py-2 rounded-full bg-[#F2EEE8] text-[#030303] hover:bg-white transition-colors"
+                className="font-sans text-[12px] font-semibold tracking-[-0.02em] px-3.5 py-1.5 rounded-[8px] bg-[#0A0A0A] text-[#F4F0EA] hover:bg-black hover:text-white transition-all duration-150 inline-flex items-center gap-1.5 shadow-sm ml-2 group"
               >
-                Join CoM
+                <span>Join CoM</span>
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden p-1.5 rounded-lg text-[#0A0A0A]/75 hover:text-black hover:bg-black/5 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-black/20"
+              aria-label="Toggle navigation menu"
+              aria-expanded={open}
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+
+          {/* Mobile Expanded Menu (Ivory/Cream drawer with crisp dark typography) */}
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="w-full flex flex-col gap-3.5 pt-4 pb-2 border-t border-black/8 mt-3"
+              >
+                {navLinks.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    onClick={(e) => handleLinkClick(e, item.to)}
+                    className="font-sans text-[14px] font-medium tracking-[-0.02em] text-[#0A0A0A]/80 hover:text-black py-1 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+
+                <div className="pt-2">
+                  <Link
+                    to="/#join"
+                    onClick={(e) => handleLinkClick(e, "/#join")}
+                    className="w-full text-center font-sans text-[13px] font-semibold tracking-[-0.02em] py-2 rounded-[8px] bg-[#0A0A0A] text-[#F4F0EA] hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                  >
+                    <span>Join CoM</span>
+                    <ArrowUpRight size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      </header>
+    </div>
   );
 }

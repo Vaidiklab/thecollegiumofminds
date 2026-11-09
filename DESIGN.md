@@ -90,15 +90,15 @@ Typography is central to Phase Neo's confident identity. The system pairs an aut
 
 ### A. Font Families
 
-1. **Primary Display & Hero Heading (`--font-display`, `--font-sans`):**
-   - **Primary:** `Inter Bold`, `Inter ExtraBold` (`font-extrabold`)
-   - **Role:** Hero title ("Collegium\nof Minds."), primary section titles.
-   - **Characteristics:** Confident, large, highly legible, strong weight, tight tracking (`tracking-tight` / `tracking-tighter`), commanding presence without thin letterforms.
+1. **Primary Display & Hero Heading (`--font-display`, `Georgia`):**
+   - **Primary:** `Georgia Bold` (700) for "Collegium" + `Georgia Italic` (400) for "of Minds".
+   - **Role:** Hero title ("Collegium\nof Minds").
+   - **Characteristics:** Classical literary gravitas, bold bracketed serifs on the primary wordmark paired with fluid cursive italic cadence for the secondary line, commanding presence against deep carbon space.
 
-2. **Secondary Editorial Phrase (`--font-serif`):**
-   - **Primary:** `Instrument Serif`, `Cormorant Garamond`, `Georgia`
-   - **Role:** "Beyond what we know.", selected philosophical pull-quotes.
-   - **Characteristics:** Elegant italic posture, warm off-white (`#E5E0D8` / `#F2EEE8`), visually subordinate to the bold display heading. Never purple.
+2. **Secondary Editorial Motto (`--font-heading`, `Instrument Serif` / `Cormorant Garamond`):**
+   - **Primary:** `Instrument Serif Italic` / `Cormorant Garamond Italic`
+   - **Role:** Hero motto ("Think. Explore. Discover."), selected philosophical pull-quotes.
+   - **Characteristics:** High-contrast editorial posture, warm off-white (`#E5E0D8`), visually subordinate and reflective. Never purple.
 
 3. **Interface & Body Sans (`--font-sans`):**
    - **Primary:** `Inter Regular` (300/400), `Inter Medium` (500), `Inter SemiBold` (600)
@@ -113,8 +113,9 @@ Typography is central to Phase Neo's confident identity. The system pairs an aut
 
 | Level | Font & Weight | Size (Mobile → Desktop) | Line Height | Tracking | Color |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Hero Title** | Inter ExtraBold (800) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.94` | `-0.035em` | `#F2EEE8` |
-| **Hero Secondary** | Instrument Serif Italic | `1.5rem` (`24px`) → `3rem` (`48px`) | `1.15` | `-0.01em` | `#E5E0D8` (off-white) |
+| **Hero Title (Line 1)** | Georgia Bold (700) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.96` | `-0.02em` | `#F2EEE8` |
+| **Hero Title (Line 2)** | Georgia Italic (400) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.96` | `-0.02em` | `#E5E0D8` |
+| **Hero Motto** | Instrument Serif Italic | `1.5rem` (`24px`) → `2.5rem` (`40px`) | `1.20` | `+0.02em` | `#E5E0D8` (off-white) |
 | **Section Title** | Instrument Serif (Normal) | `2rem` (`32px`) → `3.75rem` (`60px`) | `1.08` | `-0.02em` | `#F2EEE8` |
 | **Editorial Quote** | Instrument Serif (Italic) | `1.25rem` (`20px`) → `1.75rem` (`28px`)| `1.40` | `normal` | `#F2EEE8` |
 | **Body Large** | Inter (Light 300) | `1.0625rem` (`17px`) → `1.125rem` (`18px`)| `1.75` | `normal` | `#A3A3A3` |
@@ -137,19 +138,43 @@ The layout follows an editorial magazine architecture prioritizing generous vert
 
 ---
 
-## 7. Navigation System — Compact Floating Capsule
+## 7. Navigation System — Supaste Reference Integration & Architecture
 
-Inspired by the compact, centered floating capsule interface (reference: Supaste), the CoM navigation floats serenely at the top center of the viewport.
+The CoM navigation directly adapts the architectural and structural patterns of the reference implementation (`inspiration/Supaste — Clipboard History Manager for Mac.html`), translated into CoM's carbon-black, warm off-white editorial design system.
 
-### A. Architectural Characteristics
-- **Position:** `fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none`.
-- **Inner Capsule:** `pointer-events-auto w-full max-w-4xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3`.
-- **Surface:** `bg-[#070707]/95 backdrop-blur-md border border-white/10 shadow-[0_12px_32px_rgba(0,0,0,0.85)]`.
-- **Structure:**
-  - **Left:** CoM circular emblem (`/logo.jpeg`) with fine white border + "Collegium of Minds" wordmark.
-  - **Center:** Navigational links (`About`, `Questions`, `Library`, `Discussions`, `Events`).
-  - **Right:** High-contrast off-white pill button ("Join CoM", `bg-[#F2EEE8] text-[#030303] hover:bg-white`) for immediate clarity without color clash.
-  - **Mobile:** Adaptive hamburger trigger inside the capsule opening a refined dark dropdown with smooth AnimatePresence.
+### A. Architectural & Structural Foundations (Supaste Reference Adaptation)
+- **Top-Anchored Capsule Suspension:** Pinned directly to the viewport ceiling (`position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 50;`).
+- **Inverted Concave Fillet Wings:** Symmetrical SVG corner ears at the top-left and top-right of the capsule (`width: 20px; height: 20px; position: absolute; top: 0;`).
+  - Right wing: SVG path `M 0 0 L 20 0 C 8.954 0 0 8.954 0 20 Z` (exact quarter-circle fillet radius of 20px).
+  - Left wing: Matching inverted curve mirrored horizontally.
+  - Seamlessly bridges the browser window ceiling down into the vertical capsule boundaries.
+- **Capsule Contours & Radii:** Bottom corners feature smooth curvature (`border-bottom-left-radius: 18px; border-bottom-right-radius: 18px;`).
+- **Surface & Background:** Sculptural warm ivory/cream `#F4F0EA` with hairline border `border-b border-x border-black/8`, floating with high contrast against the carbon black void, supported by atmospheric depth shadows `shadow-[0_12px_36px_rgba(0,0,0,0.5),0_2px_8px_rgba(0,0,0,0.2)]`.
+
+### B. Proportions, Spacing & Alignment
+- **Cluster Spacing:** `gap: 36px` to `40px` horizontal separation between the Left Brand Cluster, Central/Right Navigation Links, and the Action CTA Button.
+- **Nav Link Spacing:** Clean `gap: 20px` to `24px` horizontal row.
+- **Capsule Padding:** Desktop `py-2 sm:py-2.5 px-3.5 sm:px-4`; Mobile `p-4` when open.
+
+### C. Component Typography & Hover Interactions
+- **Brand Cluster (Left):**
+  - **Emblem Frame:** 30×30px squircle with `border-radius: 8px` and hairline border `border border-black/10`, housing `/logo.jpeg` over `#E8E3DB` background.
+  - **Wordmark:** "Collegium of Minds" in `Inter` (600 SemiBold), 13–14px, tracking `-0.02em`, deep charcoal `#0A0A0A` (`group-hover:text-black transition-colors`).
+- **Navigational Links:**
+  - **Type Scale:** `Inter` (500 Medium), 13–14px, tracking `-0.02em`.
+  - **Resting State:** `#0A0A0A` at 70% opacity (`text-[#0A0A0A]/70`).
+  - **Hover State:** Smooth transition to 100% opacity `#0A0A0A` / `#000000` (`transition-colors duration-150`).
+- **Action CTA Button ("Join CoM"):**
+  - **Proportions:** `padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; line-height: 1.4em;`
+  - **Inverted Contrast Treatment:** High-contrast carbon black pill (`bg-[#0A0A0A] text-[#F4F0EA] hover:bg-black hover:text-white transition-all shadow-sm`) with subtle upward arrow glyph.
+
+### D. Responsive & Mobile Behavior
+- **Desktop (≥768px):** Horizontal ivory capsule bar hugging content width (`w-auto max-w-[95vw]`), flanked by ivory ceiling fillet wings.
+- **Tablet (768px–1199px):** Balanced horizontal padding, full link accessibility.
+- **Mobile (<768px):**
+  - Collapsed State: Width contracts to `w-full max-w-[360px]` with logo on the left and a refined icon toggle button on the right.
+  - Expanded State (Drawer): Adapts Supaste's vertical drawer variant (`framer-v-e7vfwq`). The ivory capsule itself smoothly unfolds downward via `AnimatePresence` into a rounded vertical panel (`rounded-b-[20px] p-4 bg-[#F4F0EA] border-t border-black/8`), stacking nav links with comfortable touch targets (14px Medium, tracking `-0.02em`, gap 14px) and placing the carbon-black CTA button full-width at the base.
+
 
 ---
 
@@ -157,8 +182,8 @@ Inspired by the compact, centered floating capsule interface (reference: Supaste
 
 ### A. Minimalist Editorial Composition
 The hero contains only essential elements:
-1. **The Display Heading:** `Collegium\nof Minds.` in `Inter ExtraBold` (large, commanding, left-aligned, occupying a confident portion of the left side).
-2. **The Secondary Phrase:** `Beyond what we know.` (warm off-white italic serif, visually subordinate, no purple).
+1. **The Display Heading:** `Collegium` in `Georgia Bold` + `of Minds` in `Georgia Italic` (classical high-contrast serif composition, left-aligned, occupying a commanding portion of the left side).
+2. **The Secondary Motto:** `Think. Explore. Discover.` (`Instrument Serif Italic` / `Cormorant Garamond`, warm off-white `#E5E0D8`, visually subordinate and reflective, no purple).
 3. **The Astronaut Asset:** The original `/assets/astronaut.png` floating in space, preserved with natural transparency, proportion, and subtle lighting.
 4. **Mouse Scroll Indicator:** A delicate outlined mouse icon with an animated vertical inner scroll wheel and "SCROLL TO EXPLORE" label, centered near the bottom of the hero viewport, fading out smoothly on scroll.
 
@@ -188,9 +213,36 @@ The animation is directly linked to the user's natural scroll progress (`useScro
 7. **Section G — The Guild (Members):** Founder & Executive Director Sarvesh Kore featured profile with authentic photo, quote, and manifesto modal, plus Operations & Development council member dossiers.
 8. **Digital Salon (Discussions):** Live Discord channel discussions and bulletin board feed.
 9. **Section H — Join the Collegium:** Closing invitation with rotating marginalia reflections (Feynman, Sagan, Socrates, Russell, Curie), code of conduct, guideline agreement checkbox, and Google Form application action.
-10. **Section I — Editorial Footer:** Ponder This random prompt, institutional links, Discord/GitHub/LinkedIn portals, and Sarvesh Kore copyright.
+10. **Section I — Editorial Footer System (Supaste Reference Adaptation):**
+    - **Ponder This Philosophical Strip:** Randomized thought prompt banner across the top (`bg-[#060606] border-b border-white/5 py-4`).
+    - **4-Column Directory Layout (`max-w-[1200px]`):**
+      - **Column 1 (Identity & Mission — flex: 2, 5-col span):** Squircle 30px emblem, wordmark, guild badge, Supaste-inspired dual-typography tagline (`Inter Bold` 30px "Think deeply." + `Instrument Serif Italic` 30px "Venture beyond."), mission description, 8px CTA pill ("Apply for Fellowship"), copyright line, and founder attribution row ("Conceived & Founded by" + Sarvesh Kore profile avatar link).
+      - **Column 2 (Repository / Menu — flex: 1):** `Philosophy`, `Disciplines`, `Principles`, `Inquiries`, `Library`, `Discussions`, `Events`.
+      - **Column 3 (Dialogue / Community — flex: 1):** `Discord Community`, `GitHub Repository`, `LinkedIn Portal`, `Email the Guild`, `Council Dossiers`, `Code of Conduct`.
+      - **Column 4 (Dispatches & Records — flex: 1):** `Monthly Gazette`, `Digital Salon Bulletin`, `Question of the Week`, `Substack Dispatch`, `Fellowship Inquiries`, `Supporters & Patrons`.
+    - **Monumental Watermark Typography (Supaste Reference Signature):** Full-width SVG display running across the bottom (`viewBox="0 0 1200 200"`), rendering `"COLLEGIUM OF MINDS"` in dark charcoal `#101010` / `rgba(255, 255, 255, 0.04)` with Inter 800 ExtraBold, -0.05em tight tracking, anchoring the footer with quiet sculptural authority.
+    - **Responsive Scaling:** Desktop 4 columns (`max-w-[1200px]`, gap 48px); Tablet 2-tier (Column 1 top full width, Columns 2–4 in 3-column grid below); Mobile 1-column vertical flow with proportional watermark contraction.
 
 ---
+
+## 9.B. Reference Adaptation Matrix — Supaste vs. CoM Specifics
+
+| Design Dimension | Adapted from Supaste Reference | Designed Specifically for CoM |
+| :--- | :--- | :--- |
+| **Navbar Anchor & Shape** | Pinned to ceiling (`top: 0`), bottom rounded corners (18px radius), compact capsule proportions | High-contrast warm ivory/cream (`#F4F0EA`) palette eliminating dark canvas camouflage; hairline `border-b border-x border-black/8` |
+| **Navbar Corner Ears** | Inverted concave quarter-circle SVG fillet arcs (20px) connecting ceiling to capsule | Matching warm ivory/cream SVG fills with subtle hairline contour stroke |
+| **Brand Emblem** | Squircle icon geometry (30×30px, 8px radius) | CoM circular seal within squircle frame; deep charcoal "Collegium of Minds" wordmark |
+| **Nav Links Typography** | 13–14px Medium, tracking `-0.02em`, 0.6 opacity resting → 1.0 hover | CoM route mappings with crisp charcoal `#0A0A0A`/70 resting → `#000000` hover |
+| **Action CTA Button** | Small capsule button (8px radius, 12px 600 SemiBold) | Inverted high-contrast carbon black pill (`bg-[#0A0A0A] text-[#F4F0EA]`) with upward arrow |
+| **Mobile Nav Drawer** | Seamless downward accordion/drawer expansion (`flex-col`, `p-4`) | Matching ivory/cream drawer panel with AnimatePresence transition and full-width carbon CTA |
+| **Footer Structure** | 4-column asymmetric architecture (Column 1 flex-2, Columns 2–4 flex-1) | CoM institutional categories (Repository, Dialogue, Dispatches) |
+| **Footer Tagline** | Dual-typography headline pairing: Bold Display + Italic Serif | "Think deeply. / *Venture beyond.*" philosophical pairing |
+| **Footer Attribution** | Founder / author credit line with rounded avatar link | "Conceived & Founded by" + Sarvesh Kore avatar & profile link |
+| **Footer Watermark** | Monumental SVG display typography running across the bottom | "COLLEGIUM OF MINDS" brandmark in tone-on-tone charcoal `#101010` |
+| **Atmosphere & Color** | Structural layouts and component metrics | Carbon black `#030303`, warm off-white `#F2EEE8`, restrained `#A78BFA` purple accents |
+| **Philosophical Banner** | — | "Ponder This" randomized thought prompt strip across footer top |
+| **Hero & Motion** | — | Cinematic astronaut hero with "Deep-Space Departure" scroll-linked trajectory |
+
 
 ## 10. Motion Design System
 
