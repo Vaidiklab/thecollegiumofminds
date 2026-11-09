@@ -9,3 +9,4 @@ coverage/
 # Private design references
 /inspiration/
 
+base44/.app.jsonc
