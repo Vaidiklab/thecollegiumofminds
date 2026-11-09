@@ -9,4 +9,3 @@ I have 4 ideas of improving hero section, they are:
 4. using current background.
 
 
-

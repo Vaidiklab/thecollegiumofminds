@@ -1,194 +1,262 @@
-# DESIGN.md — Design Language & Experience
-
-## 1. Design Philosophy
-
-### What the Website Visually Communicates
-*The Collegium of Minds* (CoM) is designed as a digital digital sanctuary for intellectual curiosity, scientific inquiry, philosophical speculation, and deep contemplation. It bridges the classical, venerated atmosphere of Enlightenment-era scholarly academies with a modern, high-contrast, cosmic-technological aesthetic. Rather than feeling like a sterile academic portal or a generic blog, it projects the ambience of a digital observatory or an ancient scholarly guild transported to the quantum age.
-
-### Atmosphere, Emotion & Impression
-The design creates an atmosphere that is:
-- **Contemplative & Immersive:** Deep obsidian backgrounds (`#070912`), subtle fractal film grain overlays, and gently drifting mathematical symbols establish an introspective, serene reading environment.
-- **Intellectually Elevated:** The deliberate pairing of high-contrast typography—the humanist, editorial serif **Fraunces** with the modern neutral sans **Inter** and technical **JetBrains Mono**—imparts authority, gravitas, and scholarly rigor.
-- **Luminescent & Dynamic:** Electric cyan accents (`#21D5ED`), glowing borders, and reactive constellation particle physics create an aura of illumination, revelation, and discovery.
-
-### Target Audience
-The visual design targets:
-- Curious thinkers, researchers, mathematicians, and physicists.
-- Philosophers, writers, essayists, and autodidacts.
-- Interdisciplinary scholars drawn to discussions across cosmology, AI, consciousness, ethics, and aesthetics.
-- Intellectual communities seeking high-signal discussions away from algorithmic noise.
-
-### Distinctive Identity Characteristics
-1. **The Celestial & Constellation Motif:** Interactive headings and starry canvas backgrounds dissolve and connect lines like astronomical constellations as the reader's cursor passes over them.
-2. **The "Archive & Salon" Metaphor:** Sections are named *The Archives*, *Library of Minds*, *Intellectual Assemblies*, *Inquiry Platform*, and *The Fellowship*.
-3. **Interactive 3D Objects:** 3D book covers in the background tilt with cursor physics and flip open on hover (`rotateY(-135deg)`) to reveal titles like *Cosmos*, *The Feynman Lectures*, and *The Republic*.
-4. **Cinematic Cosmic Theme Transitions:** Switching between Dark and Light mode is not an abrupt CSS change; it triggers an orchestrated 1.3-second canvas animation rendering a starburst supernova explosion (Dark → Light) or a gravitational black-hole collapse (Light → Dark).
+# DESIGN.md — The Collegium of Minds
+## Phase Neo Design System & Visual Identity Specification
 
 ---
 
-## 2. Visual Identity
+## 1. Brand Identity
 
-### A. Color Palette
+**The Collegium of Minds (CoM)** is an independent intellectual guild and decentralized laboratory of ideas. It exists for curious thinkers, scholars, and lifelong learners who explore fundamental questions across theoretical physics, transfinite mathematics, philosophy of mind, cosmology, artificial intelligence, and literature.
 
-The site features a high-contrast dark theme as its primary default, complemented by a calibrated light theme. In the CSS architecture, the color system defines semantic tokens in `@theme` while aliasing legacy token names (`bronze`, `obsidian`, `silver`) to maintain zero runtime breakages across existing components.
+CoM does not position itself as an academic institution or a generic technological blog. It embodies the atmosphere of a timeless digital observatory—a place of contemplation, depth, and discovery where inquiry precedes conformity.
 
-#### Primary Dark Theme Palette (Default)
-| Token Name | Legacy Alias | Actual HEX / Value | Role / Usage |
-| :--- | :--- | :--- | :--- |
-| `--color-background` | `--color-obsidian` | `#070912` | Deep Cosmic Obsidian; primary site canvas background |
-| `--color-card` / `--color-popover` | `--color-obsidian-surface` | `#0C0F1D` | Surface cards, floating modals, navigation bars |
-| `--color-accent` | `--color-obsidian-light` | `#171B30` | Hover states, elevated card backgrounds, active items |
-| `--color-foreground` | `--color-silver` | `#E2EBF3` | High-contrast body text, primary headings |
-| `--color-muted-foreground` | `--color-silver-muted` | `#8095B3` | Secondary text, descriptions, timestamps, subheaders |
-| — | `--color-silver-dim` | `#536783` | Tertiary text, subtle badges, unselected icons |
-| `--color-primary` | `--color-bronze` | `#21D5ED` | Electric Cyan; main brand highlight, CTAs, active pills |
-| — | `--color-bronze-light` | `#5BE7FA` | Bright Cyan; hover states on primary buttons & links |
-| — | `--color-bronze-dim` | `rgba(33, 213, 237, 0.12)` | Subtle glow fills for badges and active pills |
-| `--color-border` / `--color-input` | `--color-bronze-border` | `#191D34` / `rgba(33, 213, 237, 0.25)` | Card borders, inputs, structural dividing lines |
-| `--color-destructive` | — | `#EF4444` | Errors, warnings, destructive alerts |
+### Core Brand Principles
+- **Intellectual Curiosity:** The question takes precedence over hasty certainty.
+- **Interdisciplinary Rigor:** Cross-pollination between disparate sciences and humanistic thought.
+- **Authentic Fellowship:** A collaborative sanctuary for independent minds.
+- **Atmospheric Restraint:** Sophistication communicated through negative space, refined typography, and purposeful motion.
 
-#### Light Theme Palette (`html.light`)
-| Token Name | Actual HEX / Value | Role / Usage |
+---
+
+## 2. Creative Direction
+
+### The Visual Thesis
+```
+DARK EDITORIAL  ×  CINEMATIC MINIMALISM  ×  INTELLECTUAL EXPLORATION
+```
+
+The experience evokes:
+- Contemplative stillness and deep-space gravity.
+- Intellectual curiosity and exploration of the unknown.
+- Precision, craftsmanship, and refined editorial elegance.
+- Restraint over decorative excess: every pixel, transition, and word has intention.
+
+### Creative References & Inspirations
+- **Compact Floating Navigation:** Restrained horizontal pill capsule inspired by modern minimalist interfaces (e.g., Supaste), floating discreetly above the canvas.
+- **Luxury Editorial Publishing:** Expressive high-contrast display serif typography, generous whitespace, asymmetric column balances, and quiet margins.
+- **Cinematic Deep Space:** Pure carbon black vacuum with an isolated astronaut embarking into the unknown.
+- **Restrained Motion Design:** Purposeful, scroll-linked spatial transformations; no arbitrary animations or kinetic noise.
+
+---
+
+## 3. Design Philosophy
+
+### "Collegium of Minds is not another website trying to explain why it is interesting."
+
+It invites the reader into an intellectual sanctuary through atmosphere and typography.
+- **Black creates the atmosphere:** An uncompromising carbon black canvas eliminates digital distractions and focuses attention.
+- **Typography establishes identity:** Large high-contrast display serif headlines project authority, intellectual gravitas, and timeless humanity.
+- **The astronaut represents exploration:** A physical symbol of human curiosity venturing beyond the known perimeter of knowledge.
+- **Purple provides personality:** Used exclusively as an accent—never as an overwhelming background flood.
+- **Motion rewards curiosity:** Animations respond to user interaction rather than playing unprompted loops.
+- **Minimalism creates meaning:** Generous negative space gives deep ideas room to resonate.
+
+---
+
+## 4. Colour Palette
+
+Phase Neo establishes a strictly disciplined, predominantly monochromatic color hierarchy. Carbon black forms the foundation; warm off-white delivers optimal legibility; subtle purple is restricted strictly to tiny occasional interactive details.
+
+### A. Core Semantic Tokens
+
+| Token Name | Hex / CSS Value | Semantic Role |
 | :--- | :--- | :--- |
-| `--color-background` | `#F8FAFC` | Slate 50; crisp daylight canvas |
-| `--color-card` | `#FFFFFF` | Pure white cards and panels |
-| `--color-secondary` / `--color-muted`| `#F1F5F9` | Slate 100; subtle background fills |
-| `--color-foreground` | `#0F172A` | Slate 900; deep ink text |
-| `--color-muted-foreground` | `#475569` | Slate 600; readable secondary paragraphs |
-| `--color-silver-dim` | `#64748B` | Slate 500; metadata and subtle icons |
-| `--color-primary` | `#0284C7` | Sky 600; balanced daylight accent blue |
-| `--color-primary-light` | `#0369A1` | Sky 700; hover states in light mode |
-| `--color-border` / `--color-input` | `#CBD5E1` | Slate 300; soft card outlines and form inputs |
+| **Primary Canvas** | `#030303` | Absolute carbon black background; deep-space void |
+| **Secondary Background** | `#050505` | Footers, deep container baselines |
+| **Surface Subtle** | `#0D0D0D` / `#101010` | Editorial cards, floating modal panels |
+| **Surface Elevated** | `#141414` / `#171717` | Hovered cards, interactive pill states, input fills |
+| **Primary Text** | `#F2EEE8` | Warm editorial off-white/cream; headlines, primary reading text |
+| **Secondary Text** | `#A3A3A3` / `#A5A19F` | Neutral stone gray; body paragraphs, subheadings, excerpts |
+| **Tertiary / Dim** | `#716E6B` | Tabular numerals, metadata labels, timestamps, disabled indicators |
+| **Primary Border** | `rgba(255, 255, 255, 0.10)` | Hairline card dividers and capsule contours |
+| **Subtle Border** | `rgba(255, 255, 255, 0.05)` | Secondary dividers, internal table rules |
+| **Purple Accent** | `#A78BFA` | Selective interactive details (text selection, vote bar distribution fill) |
+| **CTA Button** | `#F2EEE8` text `#030303` | High-contrast off-white pill for primary calls to action |
 
-#### Category Color Spectrum (`categoryColors` in `src/data/articles.ts`)
-Each knowledge discipline is attributed a distinct chromatic signature used in badges, borders, and ambient glow radials:
+### B. Color Usage Rules
+- **Carbon Black Dominance:** The canvas remains uncompromisingly carbon black (`#030303`).
+- **Monochromatic Purity:** The website identity is monochromatic. The astronaut asset is the primary visual accent.
+- **Strict Purple Removal:** No purple hero typography, no purple gradients, no purple glow effects, no purple-heavy buttons, and no purple borders.
+- **Prohibited:**
+  - Blue or cyan gradients.
+  - Purple-dominated backgrounds or typography.
+  - Neon glowing halos or excessive radial flares.
+  - Heavy frosted glassmorphism.
 
-| Discipline / Category | Text Class | Border Class | Glow Value |
+---
+
+## 5. Typography System
+
+Typography is central to Phase Neo's confident identity. The system pairs an authoritative, bold geometric display with a clean interface sans-serif, an elegant secondary serif italic for selected editorial phrases, and a technical monospace.
+
+### A. Font Families
+
+1. **Primary Display & Hero Heading (`--font-display`, `--font-sans`):**
+   - **Primary:** `Inter Bold`, `Inter ExtraBold` (`font-extrabold`)
+   - **Role:** Hero title ("Collegium\nof Minds."), primary section titles.
+   - **Characteristics:** Confident, large, highly legible, strong weight, tight tracking (`tracking-tight` / `tracking-tighter`), commanding presence without thin letterforms.
+
+2. **Secondary Editorial Phrase (`--font-serif`):**
+   - **Primary:** `Instrument Serif`, `Cormorant Garamond`, `Georgia`
+   - **Role:** "Beyond what we know.", selected philosophical pull-quotes.
+   - **Characteristics:** Elegant italic posture, warm off-white (`#E5E0D8` / `#F2EEE8`), visually subordinate to the bold display heading. Never purple.
+
+3. **Interface & Body Sans (`--font-sans`):**
+   - **Primary:** `Inter Regular` (300/400), `Inter Medium` (500), `Inter SemiBold` (600)
+   - **Role:** Body copy, navigational links, buttons, metadata labels, guideline prose.
+   - **Characteristics:** Neutral geometry, open aperture, superior legibility across dark surfaces.
+
+4. **Technical Monospace (`--font-mono`):**
+   - **Primary:** `JetBrains Mono`, `ui-monospace`, `monospace`
+   - **Role:** Index numbers (`01 / PHILOSOPHY`), timestamps, poll metrics.
+
+### B. Type Scale & Optical Metrics
+
+| Level | Font & Weight | Size (Mobile → Desktop) | Line Height | Tracking | Color |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Hero Title** | Inter ExtraBold (800) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.94` | `-0.035em` | `#F2EEE8` |
+| **Hero Secondary** | Instrument Serif Italic | `1.5rem` (`24px`) → `3rem` (`48px`) | `1.15` | `-0.01em` | `#E5E0D8` (off-white) |
+| **Section Title** | Instrument Serif (Normal) | `2rem` (`32px`) → `3.75rem` (`60px`) | `1.08` | `-0.02em` | `#F2EEE8` |
+| **Editorial Quote** | Instrument Serif (Italic) | `1.25rem` (`20px`) → `1.75rem` (`28px`)| `1.40` | `normal` | `#F2EEE8` |
+| **Body Large** | Inter (Light 300) | `1.0625rem` (`17px`) → `1.125rem` (`18px`)| `1.75` | `normal` | `#A3A3A3` |
+| **Body Standard** | Inter (Light 300) | `0.875rem` (`14px`) → `0.9375rem` (`15px`)| `1.65` | `normal` | `#A3A3A3` |
+| **Section Label** | JetBrains Mono (Medium) | `0.6875rem` (`11px`) → `0.75rem` (`12px`)| `1.0` | `+0.25em` (uppercase) | `#A3A3A3` |
+| **Capsule Link** | Inter (Medium 500) | `0.75rem` (`12px`) | `1.0` | `+0.05em` | `#A3A3A3` → `#F2EEE8` |
+
+---
+
+## 6. Layout & Spacing System
+
+The layout follows an editorial magazine architecture prioritizing generous vertical rhythm, intentional asymmetry, and strict container bounds.
+
+### A. Grid & Metrics
+- **Viewport Canvas:** Fluid width with responsive side gutters (`px-6 sm:px-10 lg:px-16`).
+- **Standard Content Max-Width:** `max-w-7xl` (`1280px`).
+- **Reading / Manifesto Max-Width:** `max-w-3xl` (`768px`) to ensure comfortable line lengths.
+- **Section Spacing Cadence:** `py-28 sm:py-36`.
+- **Dividers:** Hairline borders `border-t border-white/10`.
+
+---
+
+## 7. Navigation System — Compact Floating Capsule
+
+Inspired by the compact, centered floating capsule interface (reference: Supaste), the CoM navigation floats serenely at the top center of the viewport.
+
+### A. Architectural Characteristics
+- **Position:** `fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none`.
+- **Inner Capsule:** `pointer-events-auto w-full max-w-4xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3`.
+- **Surface:** `bg-[#070707]/95 backdrop-blur-md border border-white/10 shadow-[0_12px_32px_rgba(0,0,0,0.85)]`.
+- **Structure:**
+  - **Left:** CoM circular emblem (`/logo.jpeg`) with fine white border + "Collegium of Minds" wordmark.
+  - **Center:** Navigational links (`About`, `Questions`, `Library`, `Discussions`, `Events`).
+  - **Right:** High-contrast off-white pill button ("Join CoM", `bg-[#F2EEE8] text-[#030303] hover:bg-white`) for immediate clarity without color clash.
+  - **Mobile:** Adaptive hamburger trigger inside the capsule opening a refined dark dropdown with smooth AnimatePresence.
+
+---
+
+## 8. Hero Composition & Deep-Space Departure Motion
+
+### A. Minimalist Editorial Composition
+The hero contains only essential elements:
+1. **The Display Heading:** `Collegium\nof Minds.` in `Inter ExtraBold` (large, commanding, left-aligned, occupying a confident portion of the left side).
+2. **The Secondary Phrase:** `Beyond what we know.` (warm off-white italic serif, visually subordinate, no purple).
+3. **The Astronaut Asset:** The original `/assets/astronaut.png` floating in space, preserved with natural transparency, proportion, and subtle lighting.
+4. **Mouse Scroll Indicator:** A delicate outlined mouse icon with an animated vertical inner scroll wheel and "SCROLL TO EXPLORE" label, centered near the bottom of the hero viewport, fading out smoothly on scroll.
+
+### B. "Deep-Space Departure" Scroll-Linked Animation
+The animation is directly linked to the user's natural scroll progress (`useScroll` with `useTransform`):
+1. **Initial View (0% - 15% scroll):**
+   - The astronaut floats at natural scale (`1.0`) with gentle idle 3D floating oscillation.
+2. **Descent & Inward Translation (15% - 60% scroll):**
+   - As the user scrolls, the astronaut moves downward (`y: 0px → 320px`) and drifts inward (`x: 0px → -80px`), creating depth perspective.
+3. **Exponential Scale Contraction (40% - 85% scroll):**
+   - The astronaut scales down progressively (`scale: 1.0 → 0.12`), receding into deep cosmic distance.
+4. **Smooth Vanish into Vacuum (75% - 98% scroll):**
+   - Opacity fades progressively (`1.0 → 0.0`) as the Philosophy section arrives. Canvas is clean carbon black `#030303`.
+5. **Bidirectional Control:**
+   - Scrolling upward pulls the astronaut back from deep space along the exact coordinate trajectory without scroll hijacking.
+
+---
+
+## 9. Homepage Sections Architecture
+
+1. **Section A — Hero:** Dual typography lines + independent astronaut deep-space departure.
+2. **Section B — Our Philosophy:** The central manifesto ("We do not gather to settle opinions, but to venture beyond what we know"), pull-quote card, and 3-metric ledger.
+3. **Section C — Intellectual Disciplines:** 10 numbered societies (`01` to `10`) in an editorial index table with lead provocative questions, fellow counts, and an interactive Society Detail Modal.
+4. **Section D — What Drives Us:** 4 foundational convictions (Primacy of the Question, Interdisciplinary Synthesis, Radical Independence, Lifelong Fellowship).
+5. **Section E — Questions Worth Exploring:** Dynamic 6-card inquiry shuffle grid + Question of the Week live vote with Firestore synchronization and real-time result distribution bars.
+6. **Section F — What We're Thinking:** Curated lead treatise, secondary essay grid, CoM Monthly Notebook Gazette issues, and Substack enrollment.
+7. **Section G — The Guild (Members):** Founder & Executive Director Sarvesh Kore featured profile with authentic photo, quote, and manifesto modal, plus Operations & Development council member dossiers.
+8. **Digital Salon (Discussions):** Live Discord channel discussions and bulletin board feed.
+9. **Section H — Join the Collegium:** Closing invitation with rotating marginalia reflections (Feynman, Sagan, Socrates, Russell, Curie), code of conduct, guideline agreement checkbox, and Google Form application action.
+10. **Section I — Editorial Footer:** Ponder This random prompt, institutional links, Discord/GitHub/LinkedIn portals, and Sarvesh Kore copyright.
+
+---
+
+## 10. Motion Design System
+
+Motion in CoM Phase Neo serves meaning and spatial orientation rather than ornamentation.
+
+### A. Principles
+- **Transform & Opacity First:** 100% GPU-accelerated properties (`translate3d`, `scale`, `opacity`).
+- **No Heavy Blurs:** Blurring during motion causes frame drops; avoided completely.
+- **Scroll Synchronization:** Key spatial movements are driven by native browser scroll position.
+- **Reduced-Motion Support:** Evaluates `useReducedMotion()`. If preferred, transforms are simplified to direct static layout.
+
+### B. Timing Curves
+- **Standard Entrance:** `duration: 0.7s, ease: [0.16, 1, 0.3, 1]` (custom cubic bezier for fluid deceleration).
+- **Hover Transitions:** `duration: 0.25s, ease: easeOut`.
+- **Idle Float Cycle:** `duration: 8.5s, repeat: Infinity, ease: easeInOut`.
+
+---
+
+## 11. Interaction & Hover Conventions
+
+- **Links & Buttons:**
+  - Standard text link: Color transitions from `#A5A19F` to `#F2EEE8` or `#A78BFA`.
+  - Capsule buttons: Hairline border shifts from `border-white/15` to `border-[#A78BFA]/50` with subtle background fill.
+- **Editorial Cards:**
+  - Resting state: `bg-[#0D0D0D] border border-white/10`.
+  - Hover state: `border-[#A78BFA]/35 -translate-y-0.5`.
+- **Question Cards:**
+  - Clicking any inquiry card immediately triggers a shuffle animation, replacing it with an unshown philosophical prompt.
+
+---
+
+## 12. Responsive Behaviour
+
+- **Large Desktop (≥1280px):** Full asymmetric split hero, horizontal editorial directory, 4-column council grid.
+- **Laptop / Tablet (768px – 1024px):** Proportional typography scaling (`text-5xl` to `text-7xl`), 2-column council grid.
+- **Mobile (<768px):**
+  - Navigation contracts to compact pill with logo + title + hamburger.
+  - Hero stacks typography vertically above the floating astronaut.
+  - Display titles employ fluid responsive scaling.
+  - Inquiry shuffle grid switches to single-column card stack.
+
+---
+
+## 13. Accessibility & Standards
+
+- **Contrast Ratios:** Primary text (`#F2EEE8`) on carbon black (`#030303`) yields a 17.5:1 contrast ratio (exceeding WCAG AAA standard of 7:1).
+- **Semantics:** Clean HTML5 landmark tags (`<header>`, `<nav>`, `<section>`, `<article>`, `<blockquote>`, `<footer>`).
+- **Keyboard Navigation:** All interactive elements (capsule links, modal close buttons, poll options, checkboxes) feature clear focus indicators and full keyboard accessibility.
+
+---
+
+## 14. Asset Specification
+
+| Asset | Path | Format & Quality | Purpose |
 | :--- | :--- | :--- | :--- |
-| **The Physical World** | `text-sky-400` | `border-sky-400/30` | `rgba(56, 189, 248, 0.12)` |
-| **Matter & Molecules** | `text-emerald-400` | `border-emerald-400/30` | `rgba(52, 211, 153, 0.12)` |
-| **Life & Nature** | `text-lime-400` | `border-lime-400/30` | `rgba(163, 230, 53, 0.12)` |
-| **Mathematics** | `text-amber-400` | `border-amber-400/30` | `rgba(251, 191, 36, 0.12)` |
-| **Philosophy** | `text-violet-400` | `border-violet-400/30` | `rgba(167, 139, 250, 0.12)` |
-| **Innovation & Technology**| `text-slate-300` | `border-slate-400/30` | `rgba(148, 163, 184, 0.15)` |
-| **Space & Cosmology** | `text-fuchsia-400` | `border-fuchsia-400/30` | `rgba(217, 70, 239, 0.15)` |
-| **Humanity & Society** | `text-rose-400` | `border-rose-400/30` | `rgba(251, 113, 133, 0.12)` |
-| **Arts & Expression** | `text-pink-400` | `border-pink-400/30` | `rgba(244, 114, 182, 0.15)` |
+| **Floating Astronaut** | `/assets/astronaut.png` | 1536×1024 Transparent PNG | Hero deep-space departure element |
+| **Founder Photo** | `/team/sarvesh.png` | Square Photo (High-res) | Guild leadership profile |
+| **Emblem Logo** | `/logo.jpeg` | Circular Avatar | Nav capsule & footer brandmark |
+| **OpenGraph Image**| `/og-image.png` | 1200×630 PNG | Social preview meta-card |
 
 ---
 
-### B. Typography
+## 15. Design Anti-Patterns
 
-The typography system combines an expressive, variable serif with high-legibility body sans and technical monospace:
-
-1. **Heading & Display Font (`--font-heading`, `--font-display`):**
-   - **Family:** `"Fraunces", Georgia, serif`
-   - **Characteristics:** High-contrast, editorial optical-sizing serif (`opsz 9..144`). Used for section headlines, brand titles, quotation cards, and hero displays.
-   - **Hierarchy:**
-     - Hero Main Title: `text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight`
-     - Section Headers: `text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight`
-     - Card / Subtitles: `text-xl sm:text-2xl font-bold tracking-tight`
-     - Category Eyebrows: `font-heading text-[9px] sm:text-[10px] font-semibold tracking-[3px] uppercase`
-
-2. **Body & Interface Font (`--font-body`, `--font-sans`):**
-   - **Family:** `"Inter", ui-sans-serif, system-ui, sans-serif`
-   - **Weights:** Light (300) for long-form reading, Regular (400) for standard descriptions, Medium (500) and SemiBold (600) for interactive elements and labels.
-   - **Characteristics:** Generous line heights (`leading-relaxed`, `leading-loose`), crisp rendering across dark surfaces.
-
-3. **Technical & Metadata Font (`--font-mono`):**
-   - **Family:** `"JetBrains Mono", ui-monospace, SFMono-Regular, monospace`
-   - **Characteristics:** Precise tabular numerals, code blocks, issue tags (`ISSUE #02`), status badges, and mathematical symbol displays.
-
----
-
-### C. Visual Textures, Gradients & Surface Effects
-
-- **Fractal Noise Overlay:** Applied globally to `body::before` via an inline SVG data URI with `feTurbulence` (baseFrequency 0.75, opacity 0.018, z-index 9999, pointer-events none). Eliminates harsh digital banding and creates a tactile, print-like paper finish.
-- **Celestial Particle Canvas (`AmbientBackground.tsx`):** Dynamic HTML5 canvas running at 60fps rendering 30–100 drifting stars that repel subtly from the cursor (`repulsionRadius: 110px`), with glowing connecting line webs when stars are within 120px. Includes floating rotating math symbols (`∑`, `∫`, `π`, `∞`, `e=mc²`, `Ĥ|Ψ⟩ = E|Ψ⟩`, `∇`).
-- **Glassmorphism Panels (`.glass-panel`):**
-  - Background: `rgba(12, 15, 29, 0.6)`
-  - Backdrop filter: `blur(12px)`
-  - Border: `1px solid rgba(33, 213, 237, 0.12)`
-- **Glowing Cards (`.glowing-card`):**
-  - Base shadow: `0 4px 20px rgba(0, 0, 0, 0.25)`
-  - Hover transform: `translateY(-4px) scale(1.005)`
-  - Hover shadow: `0 12px 24px rgba(33, 213, 237, 0.09)`
-  - Hover border: `rgba(33, 213, 237, 0.35)`
-- **Reading Progress Bar:** Fixed 3px horizontal bar pinned to top of screen with gradient `from-bronze via-cyan-500 to-bronze` tracking scroll percentage through long essays.
-
----
-
-## 3. Layout System
-
-### Page Structure & Composition
-The site follows an architectural hierarchy that balances large thematic sections with clear vertical cadence:
-1. **Global Fixed Navbar:** Frosted header (`backdrop-blur-md`), centered brand emblem with geometric astronomical linework, navigation links, and theme toggle button.
-2. **Hero Stage:** ConstellationHeading with interactive particle disintegration, statistical ledger strip (`StatsStrip`), and primary invitation buttons.
-3. **Alternating Thematic Sections:**
-   - Vision & Manifesto (`VisionSection`)
-   - About & Heritage (`AboutSection`)
-   - Interactive Inquiry (`QuestionsSection`)
-   - Discourse Forum (`DiscussionsSection`)
-   - Library Showcase (`LibrarySection`)
-   - Newsletter Enrollment (`NewsletterSection`)
-   - Event Schedule (`EventsSection`)
-   - Fellowship Application (`JoinSection`)
-   - Supporters & Recognitions (`RecognitionSection`)
-   - Leadership & Guild Council (`TeamSection`)
-4. **Editorial Footer:** Multi-column navigation, institutional copyright, contact links, and motto: *"Think. Explore. Discover."*
-
-### Spacing & Grid Metrics
-- **Container Max-Widths:**
-  - Hero & Full Widths: `max-w-7xl` (`1280px`)
-  - Library & Archive Views: `max-w-6xl` (`1152px`)
-  - Long-Form Reading / Articles: `max-w-3xl` (`768px`) for optimal typographical line length (65–85 characters per line).
-  - Auth Modals & Forms: `max-w-md` (`448px`)
-- **Spacing Units:**
-  - Standard section vertical padding: `py-20 sm:py-28 lg:py-32`
-  - Gap between section items: `gap-6` to `gap-8`
-  - Horizontal page padding: `px-5 sm:px-8`
-
----
-
-## 4. Components & Interaction
-
-### Buttons
-- **Primary Action Button:**
-  - Classes: `bg-bronze hover:bg-bronze-light text-obsidian px-6 py-3 rounded-xl font-heading text-xs font-semibold tracking-widest uppercase transition-all shadow-md hover:shadow-lg shadow-bronze/10 hover:-translate-y-0.5`
-- **Outline Action Button:**
-  - Classes: `border border-bronze text-bronze hover:bg-bronze/10 px-6 py-3 rounded-xl font-heading text-xs font-semibold tracking-widest uppercase transition-all`
-- **Ghost Action Button:**
-  - Classes: `text-silver hover:bg-bronze-dim/20 px-4 py-2 rounded-xl text-xs font-heading tracking-widest uppercase transition-all`
-- **Pill Badges:**
-  - Classes: `inline-flex items-center gap-2 border border-bronze-border bg-bronze-dim px-4 py-1.5 rounded-full text-[10px] font-heading font-semibold tracking-[3px] uppercase text-bronze`
-
-### Interactive Cards
-1. **Constellation Heading (`ConstellationHeading.tsx`):**
-   - Dual-layered text: bottom layer with transparent fill and stroke outline (`WebkitTextStroke: 1.2px`), top layer with solid fill.
-   - A radial CSS mask at mouse coordinates conceals the solid top layer inside the cursor radius, revealing the outline layer beneath, while an HTML5 canvas plots drifting star particles connected by delicate constellation web lines.
-2. **Typewriter Inquiry Card (`TypewriterQuestionCard.tsx`):**
-   - Card intersection observer triggers an automated character-by-character typewriter effect at 24ms intervals with a pulsing cursor indicator.
-   - Interactive flip icon (`RefreshCw`) rotates 180° on hover; clicking cycles to another question from the archives.
-3. **3D Interactive Book (`FloatingBooksBackground.tsx`):**
-   - Uses CSS 3D perspectives (`perspective: 1200px`, `transformStyle: preserve-3d`).
-   - Mouse movement over the book dynamically tilts the spine along `rotateX` and `rotateY`.
-   - Hover swings the front cover open to `rotateY(-135deg)` using an organic bezier curve (`cubic-bezier(0.2, 0.9, 0.2, 1)`), exposing the book title, author, and paper background inside.
-4. **Quote Citation Pop-up Modal (`ArticleDetailPage`):**
-   - Generates an academic quote card featuring the article excerpt, author signature, article reference ID, and one-click buttons to copy formatted citation text or shareable URL.
-
-### Form Inputs & OTP Slots (`ui.tsx`)
-- High-contrast inputs styled with `bg-obsidian-light/50 border border-bronze-border/20 rounded-xl px-4 py-3 text-silver text-sm placeholder:text-silver-dim/40`.
-- Focusing triggers `border-bronze/50 ring-1 ring-bronze/30`.
-- Segmented 6-slot OTP component (`InputOTP`, `InputOTPSlot`) with active slot ring animations for membership email verification.
-
----
-
-## 5. Design Principles for Future Development
-
-When extending or modifying the interface, all developers and AI agents must follow these immutable rules:
-
-1. **Preserve the Celestial-Enlightenment Duality:** Never replace serif headings (`Fraunces`) with generic tech sans-serifs, and never replace the deep twilight canvas (`#070912`) with flat neutral gray (`#121212` or `#1f2937`).
-2. **Maintain Color Token Semantics:** Always use CSS variable references (`var(--color-primary)`, `var(--color-background)`, or their Tailwind utility equivalents `bg-obsidian`, `text-silver`, `text-bronze`). Do not hardcode arbitrary hex values into inline styles unless driving dynamic canvas rendering.
-3. **Honor Micro-Transitions:** Every interactive element must feature explicit transition curves (`duration-300`, `ease-out`, `hover:-translate-y-0.5`). Abrupt jumps or unstyled hover states violate the polished, ethereal feel of the site.
-4. **Restraint Over Clutter:** Visual effects (canvas stars, constellation headings, floating books) must remain ambient and non-obtrusive (`pointer-events-none` on background layers, lightweight canvas calculations, cancellation of animation loops on unmount).
-5. **Universal Math & Markdown Fidelity:** In library essays, always preserve KaTeX and Markdown rendering standards. Scientific formulas, proofs, and equations must render seamlessly in both dark and light modes.
+1. **NO Neon Glows:** Never introduce high-saturation electric cyan or magenta neon glow boxes.
+2. **NO Gradient Backgrounds:** The background must never be a gradient wash; it remains carbon black `#030303`.
+3. **NO Stock/AI Personas:** All member names, roles, quotes, and avatars represent genuine project contributors.
+4. **NO Scroll Hijacking:** Wheel event interception is prohibited. Native scroll must always control page progression.
+5. **NO Glassmorphism Clutter:** Never stack translucent glass panels with thick borders. Surfaces are opaque carbon (`#0D0D0D`) with fine hairline rules.
