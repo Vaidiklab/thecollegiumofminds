@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ModernCtaButton } from "../ui/ModernCtaButton";
 
 export function FloatingNav() {
   const [open, setOpen] = useState(false);
@@ -143,18 +144,17 @@ export function FloatingNav() {
                 </Link>
               ))}
 
-              {/* Action CTA Button (Carbon Black high-contrast inverted pill) */}
-              <Link
+              {/* Action CTA Button (Carbon Black high-contrast inverted pill with Text Flip & Liquid Fill) */}
+              <ModernCtaButton
                 to="/#join"
                 onClick={(e) => handleLinkClick(e, "/#join")}
-                className="font-sans text-[12px] font-semibold tracking-[-0.02em] px-3.5 py-1.5 rounded-[8px] bg-[#0A0A0A] text-[#F4F0EA] hover:bg-black hover:text-white transition-all duration-150 inline-flex items-center gap-1.5 shadow-sm ml-2 group"
-              >
-                <span>Join CoM</span>
-                <ArrowUpRight
-                  size={13}
-                  className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </Link>
+                text="Join CoM"
+                subText="Enter Guild"
+                icon={<ArrowUpRight size={13} />}
+                variant="dark"
+                size="sm"
+                className="ml-2 font-sans font-semibold tracking-[-0.02em]"
+              />
             </div>
 
             {/* Mobile Menu Toggle Button */}
@@ -189,15 +189,17 @@ export function FloatingNav() {
                   </Link>
                 ))}
 
-                <div className="pt-2">
-                  <Link
+                <div className="pt-2 w-full">
+                  <ModernCtaButton
                     to="/#join"
                     onClick={(e) => handleLinkClick(e, "/#join")}
-                    className="w-full text-center font-sans text-[13px] font-semibold tracking-[-0.02em] py-2 rounded-[8px] bg-[#0A0A0A] text-[#F4F0EA] hover:bg-black hover:text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
-                  >
-                    <span>Join CoM</span>
-                    <ArrowUpRight size={14} />
-                  </Link>
+                    text="Join CoM"
+                    subText="Enter Guild"
+                    icon={<ArrowUpRight size={14} />}
+                    variant="dark"
+                    size="md"
+                    className="w-full font-sans font-semibold tracking-[-0.02em]"
+                  />
                 </div>
               </motion.div>
             )}

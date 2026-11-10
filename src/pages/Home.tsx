@@ -8,6 +8,7 @@ import {
 
 import { FloatingNav } from "../components/home/FloatingNav";
 import { DeepSpaceHero } from "../components/home/DeepSpaceHero";
+import { VisionSection } from "../components/home/VisionSection";
 import { PhilosophySection } from "../components/home/PhilosophySection";
 import { DisciplinesSection } from "../components/home/DisciplinesSection";
 import { PrinciplesSection } from "../components/home/PrinciplesSection";
@@ -179,17 +180,20 @@ export function RecognitionSection() {
 // ============================================================================
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#030303] text-[#F2EEE8] overflow-x-hidden selection:bg-[#A78BFA]/25 selection:text-[#F2EEE8]">
+    <div className="min-h-screen bg-[#030303] text-[#F2EEE8] overflow-x-clip selection:bg-[#A78BFA]/25 selection:text-[#F2EEE8]">
       {/* Background Starfield Canvas */}
       <AmbientBackground />
 
       {/* Compact Floating Capsule Navigation */}
       <FloatingNav />
 
-      {/* Section A — Hero: The Minimal Astronaut Experience (Deep-Space Departure) */}
+      {/* Section 01 — Hero: Beyond What We Know & Deep-Space Astronaut Departure */}
       <DeepSpaceHero />
 
-      {/* Section B — Our Philosophy: Central Manifesto & Negative Space */}
+      {/* Section 02 — The Vision: 4 Metrics & Think. Explore. Discover. Manifesto */}
+      <VisionSection />
+
+      {/* Section 03 — Our Philosophy: Full Manifesto & Negative Space (#about) */}
       <PhilosophySection />
 
       {/* Section C — Intellectual Disciplines: Editorial Directory & Societies */}

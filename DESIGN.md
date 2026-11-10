@@ -90,22 +90,27 @@ Typography is central to Phase Neo's confident identity. The system pairs an aut
 
 ### A. Font Families
 
-1. **Primary Display & Hero Heading (`--font-display`, `Georgia`):**
-   - **Primary:** `Georgia Bold` (700) for "Collegium" + `Georgia Italic` (400) for "of Minds".
-   - **Role:** Hero title ("Collegium\nof Minds").
-   - **Characteristics:** Classical literary gravitas, bold bracketed serifs on the primary wordmark paired with fluid cursive italic cadence for the secondary line, commanding presence against deep carbon space.
+1. **Hero Display Headline (`Mileast`):**
+   - **Primary:** `Mileast` (custom serif font from assets)
+   - **Role:** Main hero headline ("Beyond What\nWe Know.").
+   - **Characteristics:** Expressive, high-fashion display serif with distinctive bracketed curls, swashes, and commanding presence in warm off-white `#F2EEE8`.
 
-2. **Secondary Editorial Motto (`--font-heading`, `Instrument Serif` / `Cormorant Garamond`):**
-   - **Primary:** `Instrument Serif Italic` / `Cormorant Garamond Italic`
-   - **Role:** Hero motto ("Think. Explore. Discover."), selected philosophical pull-quotes.
-   - **Characteristics:** High-contrast editorial posture, warm off-white (`#E5E0D8`), visually subordinate and reflective. Never purple.
+2. **Hero Brand Eyebrow (`Georgia`):**
+   - **Primary:** `Georgia Bold` (700) + `Georgia Italic` (400)
+   - **Role:** Eyebrow line above main headline ("Collegium of Mind").
+   - **Characteristics:** Literary authority, balanced scale, establishing brand provenance.
 
-3. **Interface & Body Sans (`--font-sans`):**
+3. **Hero Motto Tagline (`New York`):**
+   - **Primary:** `New York` (Apple serif variable font from assets, Italic)
+   - **Role:** Hero motto ("Think. Explore. Discover.").
+   - **Characteristics:** Refined literary italic posture, warm off-white (`#E5E0D8`), meditative and timeless.
+
+4. **Interface & Body Sans (`--font-sans`):**
    - **Primary:** `Inter Regular` (300/400), `Inter Medium` (500), `Inter SemiBold` (600)
    - **Role:** Body copy, navigational links, buttons, metadata labels, guideline prose.
    - **Characteristics:** Neutral geometry, open aperture, superior legibility across dark surfaces.
 
-4. **Technical Monospace (`--font-mono`):**
+5. **Technical Monospace (`--font-mono`):**
    - **Primary:** `JetBrains Mono`, `ui-monospace`, `monospace`
    - **Role:** Index numbers (`01 / PHILOSOPHY`), timestamps, poll metrics.
 
@@ -113,9 +118,9 @@ Typography is central to Phase Neo's confident identity. The system pairs an aut
 
 | Level | Font & Weight | Size (Mobile → Desktop) | Line Height | Tracking | Color |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Hero Title (Line 1)** | Georgia Bold (700) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.96` | `-0.02em` | `#F2EEE8` |
-| **Hero Title (Line 2)** | Georgia Italic (400) | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.96` | `-0.02em` | `#E5E0D8` |
-| **Hero Motto** | Instrument Serif Italic | `1.5rem` (`24px`) → `2.5rem` (`40px`) | `1.20` | `+0.02em` | `#E5E0D8` (off-white) |
+| **Hero Eyebrow** | Georgia Bold + Italic | `1.25rem` (`20px`) → `2.25rem` (`36px`) | `1.1` | `-0.02em` | `#F2EEE8` |
+| **Hero Headline** | Mileast Display Serif | `3rem` (`48px`) → `7.25rem` (`116px`) | `0.96` | `-0.02em` | `#F2EEE8` |
+| **Hero Motto** | New York Italic | `1.5rem` (`24px`) → `2.5rem` (`40px`) | `1.20` | `+0.02em` | `#E5E0D8` (off-white) |
 | **Section Title** | Instrument Serif (Normal) | `2rem` (`32px`) → `3.75rem` (`60px`) | `1.08` | `-0.02em` | `#F2EEE8` |
 | **Editorial Quote** | Instrument Serif (Italic) | `1.25rem` (`20px`) → `1.75rem` (`28px`)| `1.40` | `normal` | `#F2EEE8` |
 | **Body Large** | Inter (Light 300) | `1.0625rem` (`17px`) → `1.125rem` (`18px`)| `1.75` | `normal` | `#A3A3A3` |
@@ -180,25 +185,40 @@ The CoM navigation directly adapts the architectural and structural patterns of 
 
 ## 8. Hero Composition & Deep-Space Departure Motion
 
-### A. Minimalist Editorial Composition
-The hero contains only essential elements:
-1. **The Display Heading:** `Collegium` in `Georgia Bold` + `of Minds` in `Georgia Italic` (classical high-contrast serif composition, left-aligned, occupying a commanding portion of the left side).
-2. **The Secondary Motto:** `Think. Explore. Discover.` (`Instrument Serif Italic` / `Cormorant Garamond`, warm off-white `#E5E0D8`, visually subordinate and reflective, no purple).
-3. **The Astronaut Asset:** The original `/assets/astronaut.png` floating in space, preserved with natural transparency, proportion, and subtle lighting.
-4. **Mouse Scroll Indicator:** A delicate outlined mouse icon with an animated vertical inner scroll wheel and "SCROLL TO EXPLORE" label, centered near the bottom of the hero viewport, fading out smoothly on scroll.
+1. **The Brand Eyebrow:** `Collegium` in `Georgia Bold` + `of Mind` in `Georgia Italic` (classical serif brand anchor above the headline).
+2. **The Display Heading:** Set in `Mileast` (expressive, high-fashion custom serif, left-aligned, commanding, set in warm off-white `#F2EEE8`, leading `0.96`, tight tracking). Structured into two dedicated lines:
+   - Line 1: `Beyond What` (rendered in a single unbroken line via `whitespace-nowrap`)
+   - Line 2: `we Know.` (rendered in a single unbroken line via `whitespace-nowrap`)
+3. **The Secondary Motto:** `Think. Explore. Discover.` in `New York` (`NewYorkItalic.ttf` authentic Apple serif variable italic, warm off-white `#E5E0D8`, tracking-wide, visually subordinate and reflective, no purple).
+4. **The Astronaut Asset Layer (`z-30` Foreground):** Rendered using `/assets/astronaut-tight.png` (tightly cropped 745×1000 geometry eliminating empty horizontal transparent padding). Positioned at `z-30 pointer-events-none` in front of the typography layer (`z-10`), floating across the right-center composition (`lg:right-4 xl:right-12 lg:top-1/2 lg:-translate-y-1/2`). This eliminates screen edge cut-offs while achieving true 3D spatial depth where the astronaut reaches forward in front of the text without blocking text interaction.
+5. **Mouse Scroll Indicator:** A delicate outlined mouse icon with an animated vertical inner scroll wheel and "SCROLL TO EXPLORE" label, centered near the bottom of the hero viewport, fading out smoothly on scroll.
 
-### B. "Deep-Space Departure" Scroll-Linked Animation
-The animation is directly linked to the user's natural scroll progress (`useScroll` with `useTransform`):
-1. **Initial View (0% - 15% scroll):**
-   - The astronaut floats at natural scale (`1.0`) with gentle idle 3D floating oscillation.
-2. **Descent & Inward Translation (15% - 60% scroll):**
-   - As the user scrolls, the astronaut moves downward (`y: 0px → 320px`) and drifts inward (`x: 0px → -80px`), creating depth perspective.
-3. **Exponential Scale Contraction (40% - 85% scroll):**
-   - The astronaut scales down progressively (`scale: 1.0 → 0.12`), receding into deep cosmic distance.
-4. **Smooth Vanish into Vacuum (75% - 98% scroll):**
-   - Opacity fades progressively (`1.0 → 0.0`) as the Philosophy section arrives. Canvas is clean carbon black `#030303`.
-5. **Bidirectional Control:**
-   - Scrolling upward pulls the astronaut back from deep space along the exact coordinate trajectory without scroll hijacking.
+### B. Cinematic Chapter Transition: Deep-Space Departure → Section Two Reveal
+
+The transition between the Hero and Section Two (Our Philosophy) is engineered as a seamless, scroll-pinned cinematic sequence (`h-[330vh]` pinned viewport, ~230vh of active scroll travel):
+
+1. **PHASE A — DEPARTURE (Scroll Progress `0.00 → 0.38`):**
+   - **Hero Layer Dissolution:** Eyebrow and headline fade out (`opacity: 1.0 → 0.0`, `y: 0 → -42px`) between `0.00` and `0.22`. Scroll indicator fades by `0.06`.
+   - **Cosmic Departure Plunge:** The astronaut visibly travels downward and inward into the cosmic vanishing point (`y: 0 → 680px`, `x: 0 → -180px`), scaling down exponentially (`scale: 1.0 → 0.04`), dissolving (`opacity: 1.0 → 0.0`, `filter: blur(0px) → blur(8px)`), and disappearing completely into the black void by `0.38`.
+
+2. **PHASE B — THE ABYSS (Scroll Progress `0.38 → 0.54`):**
+   - The screen is held in pure, deep carbon-black `#030303` void with subtle floating micro-stars.
+   - Both Hero and Philosophy layers are invisible (`opacity: 0.0`).
+   - This contemplative moment is sustained through 16% of scroll progress (~350px of natural scroll travel), creating visceral stillness before the next chapter emerges.
+
+3. **PHASE C — STAGGERED REVEAL (Scroll Progress `0.54 → 0.86`):**
+   - Section Two content emerges progressively from the darkness through restrained staggered reveals:
+     - `0.54 → 0.64`: Section Indicator (`01 / Our Philosophy` + purple ambient dot, `opacity: 0 → 1`, `y: 24 → 0`).
+     - `0.58 → 0.70`: Main Statement (`We do not gather to settle opinions...`, `opacity: 0 → 1`, `y: 36 → 0`).
+     - `0.64 → 0.76`: Pull-Quote Card (`"Curiosity is not a casual pastime..."`, `opacity: 0 → 1`, `y: 36 → 0`).
+     - `0.68 → 0.80`: Supporting Editorial Paragraphs (3 paragraphs, `opacity: 0 → 1`, `y: 36 → 0`).
+     - `0.72 → 0.86`: Minimalist Ledger (`10 Societies`, `60+ Fellows`, `∞ Inquiries`, `opacity: 0 → 1`, `y: 24 → 0`).
+
+4. **PHASE D — ARRIVAL & NATURAL HANDOVER (Scroll Progress `0.86 → 1.00+`):**
+   - At `0.86`, the Philosophy section is in full command of the viewport with active pointer events.
+   - At `1.00`, the sticky pin releases naturally without jump into the remaining normal document flow (Section C: Intellectual Disciplines).
+   - Reverse scrolling naturally pulls the transition backward in reverse sequence.
+   - Target anchor `#about` enables smooth navigation directly to the arrived Philosophy view.
 
 ---
 

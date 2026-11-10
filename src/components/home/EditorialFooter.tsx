@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ModernCtaButton } from "../ui/ModernCtaButton";
 
 const randomPrompts = [
   "If you could definitively answer one unresolved question, what would it be?",
@@ -104,17 +105,16 @@ export function EditorialFooter() {
               An independent intellectual guild for curious thinkers, scholars, and lifelong learners. Where foundational questions are celebrated and ideas explored beyond convention.
             </p>
 
-            {/* Action CTA Button (Supaste 8px pill button) */}
-            <Link
+            {/* Action CTA Button (Supaste 8px pill button with Text Flip & Liquid Fill) */}
+            <ModernCtaButton
               to="/#join"
-              className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-[8px] bg-[#F2EEE8] text-[#030303] text-[12px] font-semibold tracking-[-0.02em] hover:bg-white transition-all shadow-sm group"
-            >
-              <span>Apply for Fellowship</span>
-              <ArrowUpRight
-                size={13}
-                className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </Link>
+              text="Apply for Fellowship"
+              subText="Join the Guild"
+              icon={<ArrowUpRight size={13} />}
+              variant="ivory"
+              size="sm"
+              className="mt-2 self-start font-sans font-semibold tracking-[-0.02em]"
+            />
 
             {/* Copyright & Founder Row (Supaste Solt Wagner attribution adaptation) */}
             <div className="mt-4 pt-4 border-t border-white/8 w-full flex flex-col gap-2">
