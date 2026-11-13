@@ -47,6 +47,42 @@
   - Decoupled `VisionSection` into a dedicated, standalone section component (`VisionSection.tsx`) following `DeepSpaceHero.tsx` in normal document flow.
   - Streamlined `DeepSpaceHero.tsx` to focus purely on the Hero introduction and the astronaut's deep-space descent into the abyss.
   - Followed cleanly by `VisionSection` with its 4-metric strip (`10+ Months Active`, `60+ Members`, `10 Societies`, `∞ Ideas on the Table`), `The Vision` badge, and `More About Us` button.
-  - Followed cleanly by `PhilosophySection` (`#about`).
-  - Result: Zero text collision, clean vertical hierarchy, and natural scroll transitions.
+## Milestone 06: Phase Neo Master Interactions & Spatial Editorial Enhancements
+- **Milestone Date:** 2026-11-13
+- **Components Enhanced:**
+  - `ModernCtaButton.tsx`: Added fluid liquid color flow layer (`<motion.div>`) with SVG meniscus wave that flows in organically from the bottom on hover/click, transforming the button fill with vibrant contrasting color (`#7C3AED` purple / ivory) with high-contrast text transitions.
+  - `VisionSection.tsx`: Replaced overflowed `subText="Read Philosophy"` with concise `subText="Explore"` so the text flip never clips within the compact capsule button.
+  - `DisciplinesSection.tsx`: Transformed "The Architecture of Inquiry" into a Scroll-Driven SVG Map Editorial Gallery inspired by high-end cartographic editorial references. Sourced 10 cinematic stock images for each discipline (Mathematics, Theoretical Physics, Philosophy of Mind, Cosmology, AI, Chemistry, Biology, History, Literature, Complex Systems), added scroll-driven parallax offsets (`useTransform`), SVG map coordinates, and an interactive field observatory frame with compass reticles.
+  - `PrinciplesSection.tsx`: Re-architected "Convictions that guide our inquiry" into a tactile, sticky "Shrink and Tilt" card stack. As subsequent cards scroll into view, earlier cards scale down smoothly (`1.0 → 0.88`) and tilt at alternating physical angles (`-2.2°`, `+1.8°`, `-1.5°`) with depth shadows.
+  - `ScrollHighlightAnnotations.tsx` & `PhilosophySection.tsx`: Built an Animated Scroll Highlight Annotations component for dense philosophical prose, featuring a spatial theme toggle (`Deep Space Violet`, `Parchment Gold`, `Quantum Emerald`), a progressive reading progress rail (`useScroll`), and scroll-triggered fluorescent glow highlights that guide the reader's eye to critical insights.
+  - `EditorialFooter.tsx`: Fixed the bottom watermark SVG (`viewBox="0 0 1600 160"`, `fontSize="106"`), ensuring `COLLEGIUM OF MINDS` is completely visible and never clipped on the left or right margins. Re-engineered the 4-column directory so Repository, Dialogue, and Dispatches stay neatly grouped side-by-side on tablet/desktop without awkward wrapping.
+
+## Milestone 08: Continuous Scroll-Driven Parallax Exhibition for "The Architecture of Inquiry"
+- **Milestone Date:** 2026-11-13
+- **Component Enhanced:** `DisciplinesSection.tsx`
+- **Architecture & Interaction:**
+  - Completely replaced static tab views with a **continuous, scroll-driven multi-plane parallax editorial exhibition** for all 10 societies (Mathematics, Theoretical Physics, Philosophy of Mind, Cosmology, AI, Molecular Chemistry, Evolutionary Biology, History, Literature, Complex Systems).
+  - **Masked Window Parallax (`-16% → +16%`):** Each society features an expansive 540px high-contrast photo window where the internal image glides with silky-smooth differential speed inside a clipped frame as the user scrolls past.
+  - **Foreground Floating Card Parallax (`+40px → -40px`):** Provocation cards ("Was mathematics invented or discovered in the cosmos?") float with differential velocity over the edge of the images, creating unmistakable multi-plane optical depth.
+  - **Background Monumental Numeral Drift (`-30px → +30px`):** Gigantic translucent numerals (`01`, `02`...) glide slowly in the background at an offset depth layer.
+  - **Sticky Chapter Rail:** A sleek frosted navigation rail (`01 Math`, `02 Physics`, `03 Mind`...) pins to the top of the viewport, enabling instant smooth jumps to any society during scroll exploration.
+## Milestone 09: Minimalist Literary Scroll Highlights & Opaque Multi-Shade Luxury Principles Cards
+- **Milestone Date:** 2026-11-13
+- **Components Enhanced:**
+  - `ScrollHighlightAnnotations.tsx`: Stripped away all extraneous UI chrome (removed top header bars, passage chips, and blinking rail markers) to create a pure, minimal, literary reading experience. As the user scrolls through the manifesto paragraphs, an understated, luminous purple marker (`rgba(167, 139, 250, 0.22)`) sweeps across key insights with calm elegance.
+  - `PrinciplesSection.tsx`: Re-skinned the stacked "Convictions that guide our inquiry" cards with **opaque, light premium luxury shades**:
+    - **Card 01 (Primacy of the Question):** Warm Alabaster Linen (`#F7F4EE`) with `#141413` obsidian typography.
+    - **Card 02 (Interdisciplinary Synthesis):** Pale Celadon Sage Mist (`#EBF1EC`) with `#0F1712` deep forest graphite.
+    - **Card 03 (Radical Independence):** Ethereal Lilac Quartz Parchment (`#F1ECF7`) with `#150F1E` plum charcoal.
+    - Creates a striking, high-contrast, physical multi-card deck that tilts (`-2.2°`, `+1.8°`, `-1.5°`, `0°`) and shrinks as it stacks atop the `#030303` carbon background.
+
+## Milestone 10: Unique & Comedic 3D Jelly Shuffle in "Inquiries at the Frontier"
+- **Milestone Date:** 2026-11-13
+- **Component Enhanced:** `InquiriesSection.tsx`
+- **Interactions & Animations:**
+  - **Hilarious 3D Jelly Squash & Barrel Roll:** Clicking any inquiry card triggers an exaggerated cartoonish squash-and-stretch (`scaleX: [1, 1.26, 0.76, 1.14, 0.96, 1]`, `scaleY: [1, 0.64, 1.24, 0.9, 1.04, 1]`) coupled with a 360° spin (`rotate: [0, -10, 372, 356, 360]`) and vertical hop (`y: [0, -32, 10, -3, 0]`).
+  - **Comedic Contemplation Quips:** Each shuffle momentarily pops up a glowing purple thought bubble with rotating existential humor (e.g. *"Consulting Socrates in the underworld..."*, *"Schrödinger's cat is deciding..."*, *"Dividing by zero... please hold"*, *"Arguing with René Descartes..."*, *"Simulating 42 alternate timelines..."*).
+  - **Particle Eruption:** Playful floating `?`, `¿`, and `✦` spark particles burst upward from the card during the tumble.
+  - **3D Barrel Flip Typography Transition:** The question text rolls out and in with 3D perspective (`rotateX: 60° → 0°`).
+  - **Master "Roll the Multiverse 🎲" Button:** Header button that triggers a staggered, domino-style cascade of funny spins across all 6 inquiry cards simultaneously.
 

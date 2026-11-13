@@ -103,7 +103,7 @@ export function VisionSection() {
             }
           }}
           text="More About Us"
-          subText="Read Philosophy"
+          subText="Explore"
           icon={<ArrowUpRight size={14} />}
           variant="ivory"
           size="md"

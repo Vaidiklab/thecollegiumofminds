@@ -79,19 +79,33 @@ export const ModernCtaButton: React.FC<ModernCtaButtonProps> = ({
   // Flip text second label (defaults to same text or provided subText)
   const flipLabel = subText || text;
 
+  // Fluid wave color per variant
+  const liquidFillColor =
+    variant === "ivory"
+      ? "bg-[#7C3AED] text-[#7C3AED]"
+      : variant === "purple"
+      ? "bg-[#0A0A0A] text-[#0A0A0A]"
+      : "bg-[#6D28D9] text-[#6D28D9]";
+
   // Ripple color per variant
   const rippleBg =
     variant === "ivory"
-      ? "bg-black/15"
+      ? "bg-white/40"
       : variant === "purple"
       ? "bg-white/30"
       : "bg-white/20";
 
   const content = (
     <motion.span
-      className="relative z-10 flex items-center justify-center gap-1.5 select-none"
-      animate={{ scale: isHovered ? 1.01 : 1 }}
-      transition={{ duration: 0.2 }}
+      className="relative z-10 flex items-center justify-center gap-1.5 select-none transition-colors duration-300"
+      animate={{
+        scale: isHovered ? 1.01 : 1,
+        color:
+          isHovered && (variant === "ivory" || variant === "purple")
+            ? "#F4F0EA"
+            : undefined,
+      }}
+      transition={{ duration: 0.25 }}
     >
       {/* Vertical Text Flip Container */}
       <span className="relative inline-block overflow-hidden h-[1.3em] leading-[1.3em] font-sans font-semibold tracking-[-0.015em]">
@@ -143,6 +157,30 @@ export const ModernCtaButton: React.FC<ModernCtaButtonProps> = ({
 
   const liquidOverlay = (
     <>
+      {/* Fluid Liquid Color Wave that flows in on hover */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit] z-0"
+        initial={false}
+      >
+        <motion.div
+          className={`absolute inset-x-0 bottom-0 w-full h-[120%] ${liquidFillColor}`}
+          initial={{ y: "100%" }}
+          animate={{ y: isHovered ? "0%" : "100%" }}
+          transition={{
+            duration: 0.42,
+            ease: [0.22, 1, 0.36, 1], // fluid meniscus liquid curve
+          }}
+        >
+          {/* SVG fluid wave edge at the top of the rising liquid */}
+          <svg
+            viewBox="0 0 100 24"
+            preserveAspectRatio="none"
+            className="absolute -top-[14px] left-0 w-full h-[16px] fill-current pointer-events-none"
+          >
+            <path d="M0 24 C 20 8, 45 20, 70 8 C 85 0, 95 16, 100 12 L 100 24 L 0 24 Z" />
+          </svg>
+        </motion.div>
+      </motion.div>
       {/* Subtle organic fluid sheen on hover */}
       <motion.div
         className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"
